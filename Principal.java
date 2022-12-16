@@ -473,7 +473,7 @@ public class Principal {
 					System.out.println("5 - voltar. ");
 					System.out.println("-------------------------------");
 					System.out.print("\nDigite a opção desejada:");
-					gereciamento_aluno = sc.nextInt();
+					gereciamento_disci = sc.nextInt();
 					
 				}
 
