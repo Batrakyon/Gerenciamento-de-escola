@@ -634,10 +634,9 @@ public class Principal {
 
 					System.out.println("\n-------------------------------");
 					System.out.println("1 - Adicionar Turma; ");
-					System.out.println("2 - Registrar Docente em Disciplina; ");
-					System.out.println("3 - Modificar informações de Docente; ");
-					System.out.println("4 - Remover Doscente; ");
-					System.out.println("5 - voltar. ");
+					System.out.println("2 - Modificar informações de Docente; ");
+					System.out.println("3 - Remover Doscente; ");
+					System.out.println("4 - voltar. ");
 					System.out.println("-------------------------------");
 					System.out.print("\nDigite a opção desejada:");
 					gereciamento_turma = sc.nextInt();
@@ -660,11 +659,147 @@ public class Principal {
 						turma.setCad_turma(true);
 						list_turma.add(turma);
 
-						System.out.println("A turma" + turma.getSerie() + " doe  cadastrada!");
+						System.out.println("A turma " + turma.getSerie() + " do ano de " + turma.getAno() + " esta cadastrada!");
 						
 						break;
+						
+					case 2:
+						
+						if(Turma.getCad_turma() == true) {
+
+							System.out.println("\nVocê escolheu modificar informação de turma");
+						
+							System.out.println("1 - Serie");
+							System.out.println("2 - Ano");
+							System.out.println("3 - codigo");
+
+							System.out.println("\nDigite o numero da opção que deseja modificar: ");
+							int turma_modificar = sc.nextInt();
+							
+							switch (turma_modificar) {
+							
+							case 1:
+
+								System.out.println("\nQual serie deseja modificar? ");
+
+								for (int i = 0; list_turma.size() > i;i++) {
+									System.out.println(list_turma.get(i).getSerie());
+
+								}
+
+								System.out.println("\nDigite sua opção: ");
+								String escolher_serie = sc.next();
+								
+								if (SeachDelete.buscarSerieTurma(escolher_serie, list_turma) > -1) {
+
+									System.out.println("Digite a nova serie: ");
+									turma.setSerie(sc.next());
+
+									System.out.println("\nA nova serie é: " + turma.getSerie());
+								} else {
+									System.out.println("Esse serie não existe.");
+
+								}
+								
+								break;
+								
+							case 2: 
+								
+								System.out.println("\nQual Ano deseja modificar? ");
+
+								for (int i = 0; list_turma.size() > i;i++) {
+									System.out.println(list_turma.get(i).getAno());
+
+								}
+								
+								System.out.println("\nDigite sua opção: ");
+								int escolher_ano = sc.nextInt();
+							
+								if (SeachDelete.buscarAnoTurma(escolher_ano, list_turma) > -1) {
+
+									System.out.println("Digite a nova ano: ");
+									turma.setAno(sc.nextInt());
+
+									System.out.println("\nO novo ano é: " + turma.getAno());
+								} else {
+									System.out.println("Esse ano não existe.");
+
+								}
+								
+								break;
+								
+							case 3:
+								
+								System.out.println("\nQual codigo deseja modificar? ");
+
+								for (int i = 0; list_turma.size() > i;i++) {
+									System.out.println(list_turma.get(i).getCodigo());
+
+								}
+								
+								System.out.println("\nDigite sua opção: ");
+								int escolher_codigo = sc.nextInt();
+								
+								if (SeachDelete.buscarCodigoTurma(escolher_codigo, list_turma) > -1) {
+
+									System.out.println("Digite o novo codigo: ");
+									turma.setCodigo(sc.nextInt());
+
+									System.out.println("\nO novo codigo é: " + turma.getCodigo());
+								} else {
+									System.out.println("Esse codigo não existe.");
+
+								}
+								
+								break;
+							}
+						}else {
+							System.out.println("\nNão existem nenhuma turma registrada");
+						}
+						
+						break;
+						
+					case 3:
+						
+						if(Turma.getCad_turma() == true) {
+
+							System.out.println("\nVocê escolheu excluir uma turma");
+							System.out.println("Qual codigo deseja excluir?");
+							
+							for(int i = 0; i < list_turma.size(); i++) {
+								System.out.println(list_turma.get(i).getCodigo());
+
+							}
+							
+							System.out.println("\nDigite sua escolha: ");
+							int escolher_codigo = sc.nextInt();
+							
+							System.out.println("Tem certeza que é esse que deseja excluir? [1 - sim, 2 - não]");
+							int certeza = sc.nextInt();
+							
+							if(certeza == 1) {
+								SeachDelete.apagarCodigoTurma(escolher_codigo, list_turma, Turma.getCad_turma());
+
+								if(list_turma.size() < 1) {
+									turma.setCad_turma(false);
+								}
+
+							}else {
+								System.out.println("\nExclução cancelada");
+							}
+							
+						} else {
+							System.out.println("\nNão existem nenhuma turma registrada");
+						}
+						
+						break;
+						
+						default:
+							
 					}
 				}
+				
+				break;
 
 			case 5:
 				System.out.println("Você escolheu visualizar os relatórios.");
