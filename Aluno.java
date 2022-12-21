@@ -1,9 +1,15 @@
+import java.util.HashMap;
 
 public class Aluno extends Humano {
 	
 	private int matricula = 0;
 	private double nota = 0;
 	private static boolean cad_aluno = false;
+	HashMap<Disciplinas, Double> boletim = new HashMap<>();
+
+	public HashMap<Disciplinas, Double> getBoletim() {
+		return boletim;
+	}
 
 	public int getMatricula() {
 		return matricula;
