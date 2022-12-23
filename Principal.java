@@ -928,6 +928,28 @@ public class Principal {
 						System.out.println("Turma encontrada!");
 						list_turma.get(i).mostrarInfo();
 
+						for(int k = 0; k < list_turma.get(i).alunos.size(); k++){
+
+							System.out.println(list_turma.get(i).alunos.get(k).nome);
+						}
+
+						System.out.println("------------------"+
+						"\nMédias: "+
+						"\n");
+						for(int ii = 0; ii<list_turma.get(i).disciplinas.size(); ii++){
+							System.out.print(list_turma.get(i).disciplinas.get(ii).materia +": ");
+							double total = 0;
+				
+							for(int kk = 0; kk < list_turma.get(i).disciplinas.get(ii).aluno.size(); kk++){
+				
+								total += list_turma.get(i).disciplinas.get(ii).aluno.get(kk).getNota();
+							}
+				
+							System.out.println(total/ list_turma.get(i).disciplinas.get(ii).aluno.size());
+						}
+
+						System.out.println("-----------------");
+
 					} else {
 						System.out.println("Erro! Código inválido inserido");
 					}
