@@ -104,7 +104,9 @@ public class Turma {
 
 	public String mostrarInfo(){
 		return "// relatório da turma "+getSerie()+" do ano " + getAno() + "// "+
-		"código: "+getCodigo();
+		"código: "+getCodigo()+
+		"------------------"+
+		"\nAlunos desta turma: ";
 		//a finalizar
 	}
 	
